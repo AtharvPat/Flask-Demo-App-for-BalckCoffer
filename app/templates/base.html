@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rajdhani">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <style>
+      html, body {
+        font-family: 'Rajdhani', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        background-color: #343a40;
+        padding: 20px;
+      }
+      .header a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .header a:hover {
+        color: #ccc;
+      }
+      .nav-pills {
+        margin: 0;
+      }
+      .nav-pills li {
+        margin-right: 10px;
+      }
+      .container {
+        padding: 20px;
+      }
+      footer {
+        background-color: #343a40;
+        color: #fff;
+        padding: 10px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          {% if session['logged_in'] == True %}
+          <li role="presentation"><a href="/">Home</a></li>
+          <li role="presentation"><a href="/about">About</a></li>
+          <li role="presentation"><a href="/contact">Contact</a></li>
+          <li role="presentation"><a href="/logout">Logout</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    <div class="container">
+      {% block body %}
+      {% endblock %}
+    </div>
+    <footer class="container" style="text-align: center;">© Atharv's Flask Demo</footer>
+  </body>
+</html>
